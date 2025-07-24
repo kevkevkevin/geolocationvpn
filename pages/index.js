@@ -11,6 +11,9 @@ export default function Home() {
   const [zoom, setZoom] = useState(15)
   const [showModal, setShowModal] = useState(false)
   const [modalMessage, setModalMessage] = useState('')
+  const getHeaderFontSize = () => (window.innerWidth < 500 ? '1.5rem' : '2.5rem')
+  const getGhostFontSize = () => (window.innerWidth < 500 ? '1.2rem' : '2rem')
+  const getSubtextFontSize = () => (window.innerWidth < 500 ? '0.9rem' : '1.2rem')
 
   const messages = [
     '⚠️ Someone tried to access your phone!',
@@ -253,10 +256,6 @@ export default function Home() {
     const seconds = Math.floor((new Date() - new Date(lastPingTime)) / 5000)
     return `${seconds} second${seconds !== 1 ? 's' : ''} ago`
   }
-
-  const getHeaderFontSize = () => (window.innerWidth < 500 ? '1.5rem' : '2.5rem')
-  const getGhostFontSize = () => (window.innerWidth < 500 ? '1.2rem' : '2rem')
-  const getSubtextFontSize = () => (window.innerWidth < 500 ? '0.9rem' : '1.2rem')
 
   return (
     <div style={{
