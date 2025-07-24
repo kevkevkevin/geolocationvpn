@@ -254,6 +254,10 @@ export default function Home() {
     return `${seconds} second${seconds !== 1 ? 's' : ''} ago`
   }
 
+  const getHeaderFontSize = () => (window.innerWidth < 500 ? '1.5rem' : '2.5rem')
+  const getGhostFontSize = () => (window.innerWidth < 500 ? '1.2rem' : '2rem')
+  const getSubtextFontSize = () => (window.innerWidth < 500 ? '0.9rem' : '1.2rem')
+
   return (
     <div style={{
       position: 'relative',
@@ -270,14 +274,19 @@ export default function Home() {
         transform: 'translateX(-50%)',
         textAlign: 'center',
         zIndex: 10,
-        color: vpnActive ? '#00ff00' : '#ff4444', // <-- Make header green when VPN is active
+        color: vpnActive ? '#00ff00' : '#ff4444',
       }}>
         <h1 style={{
-          fontSize: '2.5rem',
+          fontSize: getHeaderFontSize(),
           marginBottom: '1rem',
-          textShadow: vpnActive ? '0 0 10px #00ff00' : '0 0 5px #ff4444', // <-- Green glow when active
+          textShadow: vpnActive ? '0 0 10px #00ff00' : '0 0 5px #ff4444',
+          transition: 'font-size 0.2s',
         }}>⚠️ Secure Tracking Portal</h1>
-        <p style={{ fontSize: '1.2rem', opacity: 0.8 }}>Monitoring real-time activity...</p>
+        <p style={{
+          fontSize: getSubtextFontSize(),
+          opacity: 0.8,
+          transition: 'font-size 0.2s',
+        }}>Monitoring real-time activity...</p>
       </div>
 
       <div style={{
@@ -291,10 +300,11 @@ export default function Home() {
         position: 'relative',
       }}>
         <h1 style={{
-          fontSize: '2rem',
+          fontSize: getGhostFontSize(),
           textAlign: 'center',
           marginBottom: '2rem',
           textShadow: '0 0 5px currentColor',
+          transition: 'font-size 0.2s',
         }}>🔒 GHOST TRACKER</h1>
         <p><strong>Name:</strong> Christian Ong Nuguid</p>
         <p><strong>Country:</strong> {country || 'Detecting...'}</p>
