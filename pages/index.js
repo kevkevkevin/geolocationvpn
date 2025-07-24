@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export default function Home() {
+  const [windowWidth, setWindowWidth] = useState(1000)
   const [country, setCountry] = useState('')
   const [watchers, setWatchers] = useState(null)
   const [vpnActive, setVpnActive] = useState(false)
@@ -11,9 +12,9 @@ export default function Home() {
   const [zoom, setZoom] = useState(15)
   const [showModal, setShowModal] = useState(false)
   const [modalMessage, setModalMessage] = useState('')
-  const getHeaderFontSize = () => (window.innerWidth < 500 ? '1.5rem' : '2.5rem')
-  const getGhostFontSize = () => (window.innerWidth < 500 ? '1.2rem' : '2rem')
-  const getSubtextFontSize = () => (window.innerWidth < 500 ? '0.9rem' : '1.2rem')
+   const getHeaderFontSize = () => (windowWidth < 500 ? '1.5rem' : '2.5rem')
+  const getGhostFontSize = () => (windowWidth < 500 ? '1.2rem' : '2rem')
+  const getSubtextFontSize = () => (windowWidth < 500 ? '0.9rem' : '1.2rem')
 
   const messages = [
     '⚠️ Someone tried to access your phone!',
@@ -40,6 +41,15 @@ export default function Home() {
       setShowModal(false)
     }, 5000)
   }
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setWindowWidth(window.innerWidth)
+      const handleResize = () => setWindowWidth(window.innerWidth)
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   useEffect(() => {
     // Matrix effect
