@@ -1,11 +1,11 @@
 :root {
-  --background: #ffffff;
+  --background: transparent; /* Changed from #ffffff to allow matrix to show */
   --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: transparent; /* Changed from #0a0a0a to allow matrix */
     --foreground: #ededed;
   }
 }
@@ -39,4 +39,21 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.glitch {
+  position: relative;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-shadow: 0 0 1px #ff4444;
+  animation: glitch 0.9s infinite;
 }
