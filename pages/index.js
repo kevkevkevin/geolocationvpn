@@ -12,7 +12,7 @@ export default function Home() {
   const [zoom, setZoom] = useState(15)
   const [showModal, setShowModal] = useState(false)
   const [modalMessage, setModalMessage] = useState('')
-   const getHeaderFontSize = () => (windowWidth < 500 ? '1.5rem' : '2.5rem')
+  const getHeaderFontSize = () => (windowWidth < 500 ? '1.5rem' : '2.5rem')
   const getGhostFontSize = () => (windowWidth < 500 ? '1.2rem' : '2rem')
   const getSubtextFontSize = () => (windowWidth < 500 ? '0.9rem' : '1.2rem')
 
@@ -280,6 +280,7 @@ export default function Home() {
         position: 'absolute',
         top: '1rem',
         left: '50%',
+        width: '100%',
         transform: 'translateX(-50%)',
         textAlign: 'center',
         zIndex: 10,
